@@ -1,0 +1,320 @@
+//Шрифты
+@import url(https://fonts.googleapis.com/css?family=Rubik:regular,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Raleway:700,800&display=swap);
+//Обнуление
+@import "_nullstyle.scss";
+
+/*________style_______*/
+body{
+	height: 100vh;
+	background-color: #202020;
+	font-family: Rubik;
+	color: #fff;
+	
+}
+.wrapper {
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+}
+
+// =============================================================================================
+.square {
+	height: 100vh;	
+	position: relative;
+	&_play {
+
+	}
+
+		&__item {
+			z-index: 3;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 125px;
+			height: 125px;
+			background-color: #000;
+			display: inline-block;
+			visibility: hidden;
+	
+			color: #fff;
+			font-size: 35px;
+			text-align: center;
+	
+			&_1 {
+				&_play{
+					transform: translate(-100%, -100%);
+					animation-name: square-1;
+					animation-duration: 2s;
+					animation-fill-mode: forwards;
+					animation-timing-function: ease-in;
+					animation-delay: 0.5s;
+				}
+				
+			}
+	
+			&_2 {
+				&_play{
+					transform: translate(0, -100%);
+					animation-name: square-2;
+					animation-duration: 2s;
+					animation-fill-mode: forwards;
+					animation-timing-function: ease-in;
+					animation-delay: 0.5s;
+				}
+				
+			}
+	
+			&_3 {
+				&_play{
+					transform: translate(-100%, 0);
+					animation-name: square-3;
+					animation-duration: 2s;
+					animation-fill-mode: forwards;
+					animation-timing-function: ease-in;
+					animation-delay: 0.5s;
+				}
+			}
+	
+			&_4 {
+				&_play{
+					animation-name: square-4;
+					animation-duration: 2s;
+					animation-fill-mode: forwards;
+					animation-timing-function: ease-in;
+					animation-delay: 0.5s;
+				}
+			}
+		}
+}
+
+
+// ===============================
+@keyframes square-1 {
+	0%{
+		visibility: visible;
+		left: 50%;
+		top: 50%;
+	}
+	100%{
+		left: 0%;
+		top: 0%;
+	}	
+}
+@keyframes square-2 {
+	0%{
+		visibility: visible;
+		left: 50%;
+		top: 50%;
+	}
+	100%{
+		
+		left: 100%;
+		top: 0%;
+	}	
+}
+@keyframes square-3 {
+	0%{
+		visibility: visible;
+		left: 50%;
+		top: 50%;
+	}
+	100%{
+		left: 0%;
+		top: 100%;
+	}	
+}
+@keyframes square-4 {
+	0%{
+		visibility: visible;
+		left: 50%;
+		top: 50%;
+	}
+	100%{
+		left: 100%;
+		top: 100%;
+	}	
+}
+// ======================================================================
+.circle {
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	visibility: hidden;
+
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	background-color: #828282;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	font-size: 30px;
+	
+	
+	&.enter{
+		visibility: hidden;
+		opacity: 0;
+	}
+	&_play{
+		transform: translate(-50%,-50%) rotate(-180deg);
+
+		animation-name: circle;
+		animation-delay: 2.5s;
+		animation-fill-mode: forwards;
+		animation-duration: 2s;
+	}
+	
+}
+
+
+
+@keyframes circle{
+	0%{
+	}
+	100%{
+		transform: translate(-50%,-50%) rotate(0deg);
+		visibility: visible;
+	}
+}
+
+
+// ==========================================================================================
+.popup {
+	opacity: 0;
+	visibility: hidden;
+	z-index: 5;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	transition: all 0.8s ease 0s;
+
+	
+	&__body {
+		display: flex;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+	&.open{
+		opacity: 1;
+		visibility: visible	;
+	}
+	
+}
+// =======================================================
+.form {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	
+	font-size: 28px;
+	background-color: #373535;
+	border-radius: 30px;
+	padding: 50px 70px;
+	&__close{
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		color: #fff;
+	}
+	&__item {
+		
+	}
+
+	&__label {
+		text-transform: uppercase;
+		display: block;
+		margin: 0 0 20px;
+	}
+
+	&__select {
+		display: block;
+		font-size: 20px;
+		width: 100%;
+	}
+	&__input{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+	&__button{
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		visibility: hidden;
+		opacity: 0;
+		background-color: rgb(33, 139, 47);
+		border-radius: 15px;
+		height: 60px;
+		color: #fff;
+		font-size: 20px;
+		transition: all 0.8s ease 0s;
+		&:hover{
+			background-color: rgb(30, 95, 39);
+		}
+
+		&.active{
+			opacity: 1;
+			visibility: visible	;
+		}
+	}
+
+	@media (max-width:490px){
+		padding: 25px 30px;
+		gap: 20px;
+		font-size: 20px;
+	}
+}
+// ===========================================================
+.block {
+	position: absolute;
+	max-width: 700px;
+	
+	z-index: 6;
+	top: 50%;
+	left: 50%;
+
+	visibility: hidden;
+	opacity: 0;
+
+	transition: all 0.8s ease 0s;
+	transform: translate(-50%, -50%);
+	&.enter{
+		visibility: visible;
+		opacity: 1;
+	}
+	
+}
+.block__text {
+	font-size: 24px;
+	text-transform: uppercase;
+	line-height: 150%;
+	text-align: center;
+	span{
+		font-size: 30px;
+		color: rgb(177, 61, 61);
+	}
+}
+.block__mark {
+}
+.block__model {
+}
+.block__year {
+}
+.block__data {
+}
+.remove{
+	display: inline-block;
+	color: rgb(255, 255, 255);
+	text-decoration: underline;
+}
